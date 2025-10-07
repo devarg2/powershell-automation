@@ -11,15 +11,20 @@
     Date: October 2025
 #>
 
+# Import the logger
+. "$PSScriptRoot\logger.ps1"
+
 # Load Wi-Fi config
 $configPath = Join-Path $PSScriptRoot "..\config\wifi.json"
 if (-not (Test-Path $configPath)) {
-    Write-Error "Wi-Fi config file not found: $configPath"
+    Write-Log "Wi-Fi config file not found: $configPath" "ERROR"
     exit 1
 }
 
 $config = Get-Content $configPath | ConvertFrom-Json
 $requiredSSID = $config.requiredForPrinterAccess
+
+Write-Log "Loaded Wi-Fi config. Required SSID: $requiredSSID" "INFO"
 
 # Get current Wi-Fi SSID
 try {
@@ -27,21 +32,21 @@ try {
              ForEach-Object { ($_ -split ':')[1].Trim() } |
              Where-Object { $_ -ne "" } | Select-Object -First 1)
 } catch {
-    Write-Error "Unable to determine current Wi-Fi network."
+    Write-Log "Unable to determine current Wi-Fi network." "ERROR"
     exit 1
 }
 
 if (-not $ssid) {
-    Write-Host "No Wi-Fi connection detected." -ForegroundColor Yellow
+    Write-Log "No Wi-Fi connection detected." "WARN"
     exit 1
 }
 
-Write-Host "Connected to SSID: $ssid"
+Write-Log "Connected to SSID: $ssid" "INFO"
 
 if ($ssid -eq $requiredSSID) {
-    Write-Host "[OK] Verified: Connected to required network '$requiredSSID'." -ForegroundColor Green
+    Write-Log "Verified: Connected to required network '$requiredSSID'." "INFO"
     exit 0
 } else {
-    Write-Host "[FAIL] You are not on '$requiredSSID'. Access denied." -ForegroundColor Red
+    Write-Log "You are not on '$requiredSSID'. Access denied." "ERROR"
     exit 1
 }
