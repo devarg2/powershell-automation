@@ -1,0 +1,9 @@
+# Environment variables
+.env
+.env.local
+.env.*
+
+# Ignore all logs and backups
+logs/
+*.log
+*.bak
