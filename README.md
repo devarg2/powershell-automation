@@ -50,7 +50,7 @@ git clone https://github.com/mtusalexis/build-scripts.git
 Update config files under `/config` to match your environment:
 ```json
 {
-    "requiredForPrinterAccess": "Build Wifi"
+    "requiredForPrinterAccess": "Wifi"
 }
 ```
 
