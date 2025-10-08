@@ -43,14 +43,17 @@ PowerShell-Automation/
 > Development and testing are done in **Visual Studio Code (VS Code)**
 ### 1. Clone the Repository
 ```powershell
-git clone https://github.com/mtusalexis/build-scripts.git
+git clone https://github.com/devarg2/powershell-automation.git
 ```
 
 ### 2. Configure
 Update config files under `/config` to match your environment:
 ```json
 {
-    "requiredForPrinterAccess": "Wifi"
+    "approvedNetworks": [
+        "${APPROVED_NETWORKS}"
+    ],
+    "requiredForPrinterAccess": "${REQUIRED_FOR_PRINTER_ACCESS}"
 }
 ```
 
