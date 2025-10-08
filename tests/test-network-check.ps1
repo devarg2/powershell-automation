@@ -31,7 +31,7 @@ Write-Host "------------------------------------------------------------`n"
 # Mock test cases
 $testCases = @(
     @{ Name = "Correct SSID"; SSID = $requiredSSID; ExpectedExit = 0 }
-    @{ Name = "Wrong SSID";   SSID = "BUILD Guest";   ExpectedExit = 1 },
+    @{ Name = "Wrong SSID";   SSID = "Guest Wifi";   ExpectedExit = 1 },
     @{ Name = "No SSID";      SSID = $null;         ExpectedExit = 1 }
 )
 
