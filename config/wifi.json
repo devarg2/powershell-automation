@@ -1,0 +1,6 @@
+{
+    "approvedNetworks": [
+        "${APPROVED_NETWORKS}"
+    ],
+    "requiredForPrinterAccess": "${REQUIRED_FOR_PRINTER_ACCESS}"
+}
