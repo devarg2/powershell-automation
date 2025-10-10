@@ -168,7 +168,7 @@ $answer = Read-Host -Prompt "What is your favorite movie?"
 
 # If check with or, less than, and greather than plus response with answer
 If ( $answer -lt 1 -or $answer -gt 5) {
-    Write-Host "Wront choice!"
+    Write-Host "Wrong choice!"
 } else {
     Write-Host "I like $($movies[$answer-1]) too!"
 }
