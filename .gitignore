@@ -7,3 +7,6 @@
 logs/
 *.log
 *.bak
+
+# Ignore all text files
+**/*.txt
